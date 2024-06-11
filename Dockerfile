@@ -15,7 +15,7 @@ WORKDIR /gpt
 
 # 装载项目文件，安装剩余依赖（必要）
 COPY . .
-RUN wget https://github.com/omegaduncan/ygpt_academic/raw/master/gradio-3.32.10-py3-none-any.whl
+RUN wget https://github.com/omegaduncan/gpt_academic/raw/master/gradio-3.32.10-py3-none-any.whl
 RUN pip3 install -r requirements.txt 
 RUN pip3 install ./gradio-3.32.10-py3-none-any.whl
 
