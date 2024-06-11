@@ -1,4 +1,3 @@
-gradio @ git+https://github.com/omegaduncan/gpt_academic.git@master#egg=gradio-3.32.10
 fastapi==0.110
 gradio-client==0.8
 pypdf2==2.12.1
