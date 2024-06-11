@@ -10,24 +10,14 @@ FROM python:3.11
 RUN apt-get update
 RUN apt-get install ffmpeg -y
 
-COPY requirements.txt ./
-RUN wget https://github.com/omegaduncan/ygpt_academic/raw/master/gradio-3.32.10-py3-none-any.whl
-RUN pip3 install -r requirements.txt 
-RUN pip3 install ./gradio-3.32.10-py3-none-any.whl
-
 # 进入工作路径（必要）
 WORKDIR /gpt
 
-
-# 安装大部分依赖，利用Docker缓存加速以后的构建 （以下两行，可以删除）
-COPY requirements.txt ./
-RUN pip3 install -r requirements.txt
-
-
 # 装载项目文件，安装剩余依赖（必要）
 COPY . .
-RUN pip3 install -r requirements.txt
-
+RUN wget https://github.com/omegaduncan/ygpt_academic/raw/master/gradio-3.32.10-py3-none-any.whl
+RUN pip3 install -r requirements.txt 
+RUN pip3 install ./gradio-3.32.10-py3-none-any.whl
 
 # 非必要步骤，用于预热模块（可以删除）
 RUN python3  -c 'from check_proxy import warm_up_modules; warm_up_modules()'
