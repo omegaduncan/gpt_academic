@@ -6,8 +6,9 @@
 FROM python:3.11
 
 # 语音输出功能（以下两行，第一行更换阿里源，第二行安装ffmpeg，都可以删除）
+# 使用默认源安装 ffmpeg
+RUN apt-get update
 RUN apt-get install ffmpeg -y
-
 
 # 进入工作路径（必要）
 WORKDIR /gpt
