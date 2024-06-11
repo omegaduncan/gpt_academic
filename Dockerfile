@@ -10,6 +10,11 @@ FROM python:3.11
 RUN apt-get update
 RUN apt-get install ffmpeg -y
 
+COPY requirements.txt ./
+RUN wget https://github.com/omegaduncan/ygpt_academic/raw/master/gradio-3.32.10-py3-none-any.whl
+RUN pip3 install -r requirements.txt 
+RUN pip3 install ./gradio-3.32.10-py3-none-any.whl
+
 # 进入工作路径（必要）
 WORKDIR /gpt
 
