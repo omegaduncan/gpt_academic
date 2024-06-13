@@ -10,6 +10,9 @@ FROM python:3.11
 RUN apt-get update
 RUN apt-get install ffmpeg -y
 
+# 安装 Latex 相关依赖
+RUN apt-get install -y texlive-full
+
 # 进入工作路径（必要）
 WORKDIR /gpt
 
@@ -21,7 +24,6 @@ RUN pip3 install ./gradio-3.32.10-py3-none-any.whl
 
 # 非必要步骤，用于预热模块（可以删除）
 RUN python3  -c 'from check_proxy import warm_up_modules; warm_up_modules()'
-
 
 # 启动（必要）
 CMD ["python3", "-u", "main.py"]
